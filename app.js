@@ -237,15 +237,11 @@ var LiveCodingTV = require('node-livecodingtv'),
             keys = Object.keys(LiveCodingTV.commands),
             desc;
         if (data) {
-            try {
-                keys.forEach(function (cmd) {
-                    desc = LiveCodingTV.commands[cmd]();
-                    msg += (desc) ? "\r\n!" + cmd + ": " + desc : "";
-                });
-                ChatBot.say(msg);
-            } catch (e) {
-                console.log("error:", e);
-            }
+            keys.forEach(function (cmd) {
+                desc = LiveCodingTV.commands[cmd]();
+                msg += (desc) ? "\r\n!" + cmd + ": " + desc : "";
+            });
+            ChatBot.say(msg);
         } else {
             return description;
         }
