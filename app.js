@@ -15,8 +15,8 @@ var LiveCodingTV = require('node-livecodingtv'),
         
         setTimeout(function () {
             ChatBot.on('join', function (data) {
-                if (data.roll === "viewer") {
-                    var message = "🤖 ChatBot welcomes you " + data.who + "!";
+                if (data.role === "viewer") {
+                    var message = "ChatBot welcomes you " + data.who + "!";
                     setTimeout(function () {
                         if (ChatBot.viewers().indexOf(data.who) !== -1) {
                             ChatBot.say(message);
@@ -31,7 +31,7 @@ var LiveCodingTV = require('node-livecodingtv'),
         /************************************************
         *   data = {
         *       from: STRING,
-        *       roll: ["owner"|"moderator"|"viewer"],
+        *       role: ["owner"|"moderator"|"viewer"],
         *       message: STRING,
         *       stanza: OBJECT
         *   }
@@ -39,8 +39,8 @@ var LiveCodingTV = require('node-livecodingtv'),
     });
         
     LiveCodingTV.commands.help = function (data) {
-        var description = "🤖 Describes all available commands.",
-            msg = "\r\n__________________\r\n 🤖 ChatBot Commands\r\n------------------",
+        var description = "Describes all available commands.",
+            msg = "\r\n__________________\r\n ChatBot Commands\r\n------------------",
             keys = Object.keys(LiveCodingTV.commands),
             desc;
         if (data) {
